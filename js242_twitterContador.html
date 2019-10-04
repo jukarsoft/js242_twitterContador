@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>location</title>
+
+	<script type="text/javascript">
+
+	//onkeyup detecta cuando se libera la tecla
+
+	// variable longitud maxima
+		const totalLetras=145;
+
+		function contadorTecla() {
+			//recuperar el contenido del textarea
+			var contenido = document.getElementById('texto').value;
+			//conocer el numero de caracteres introducidos
+			var longitud = contenido.length;
+						
+			//restar de la longitud maxima permitida
+			var contador = totalLetras - longitud;
+			
+			//si el resultado es <0 mostrar una alerta
+			if (contador < 0) {
+				alert('longitud máxima superada');
+				contador=0;
+				contenido = contenido.substr(0,totalLetras-1);
+				document.getElementById('texto').value = contenido;
+				return
+			}
+			//visualiza en la página el numerador
+			document.getElementById('contador').value = contador;
+		}
+				
+	</script>
+	
+</head>
+<body>
+	<textarea  id="texto" onkeydown="contadorTecla()" onkeyup="contadorTecla()"></textarea>
+	<input type="text" id="contador" name="" disabled value="145" >
+</body>
+</html>
